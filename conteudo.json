@@ -1,0 +1,55 @@
+{
+  "featured": [
+    {
+      "id": "feat-1",
+      "title": "The Sims 2: Bella Goth full movie",
+      "type": "video",
+      "description": "Immerse yourself in the complete story of Bella Goth, one of the most iconic and mysterious characters in The Sims universe!",
+      "image": "https://i9.ytimg.com/vi/25RXijA0Guc/maxresdefault.jpg?time=1781461800000&sqp=CKjmu9EG&rs=AOn4CLAfb4wvL-M3BsmfwHW4Ih_D-aUExQ",
+      "youtubeId": "25RXijA0Guc"
+    },
+    {
+      "id": "feat-2",
+      "title": "Bella Goth Makeover - Custom Content Sims 2",
+      "type": "download",
+      "description": "Bella goth full sim in sims2.pack for download!",
+      "image": "https://i.pinimg.com/736x/22/30/b3/2230b3b0537a0bd16a945cca31507f6d.jpg",
+      "downloadUrl": "https://www.mediafire.com/file/0p865ag1z8y87oe/Bella_Goth-By-TwoSimsLight.Sims2Pack/file"
+    }
+  ],
+  "rows": [
+    {
+      "title": "Recent Videos",
+      "items": [
+        {
+          "id": "v-1",
+          "title": "Sims 2 - The Movie",
+          "type": "video",
+          "youtubeId": "uxzaY2ukJWA",
+          "image": "https://i9.ytimg.com/vi_webp/uxzaY2ukJWA/sddefault.webp?v=6a0887b7&sqp=COD9u9EG&rs=AOn4CLAoc-mhZgsaU79wgGfJ7BPryDn03w"
+        }
+      ]
+    },
+    {
+      "title": "Packs of Mods & Custom Content (CC)",
+      "items": [
+        {
+          "id": "d-1",
+          "title": "Bella Goth Makeover sims 2",
+          "type": "download",
+          "description": "Bella goth full sim in sims2.pack for download!",
+          "image": "https://i.pinimg.com/736x/22/30/b3/2230b3b0537a0bd16a945cca31507f6d.jpg",
+          "downloadUrl": "https://www.mediafire.com/file/0p865ag1z8y87oe/Bella_Goth-By-TwoSimsLight.Sims2Pack/file"
+        },
+        {
+          "id": "d-2",
+          "title": "Sims 4 Ray Tracing download mod",
+          "type": "download",
+          "description": "Download the ray tracing shader preset for sims 4! DOWNLOAD LINKS:<br><br>Gshade program:<br>https://seulink.net/GshadeSims4<br><br>Syrius Ascend Ray Tracing Preset: (mediafire):<br>https://seulink.net/S4RayTracing",
+          "image": "https://i9.ytimg.com/vi_webp/QJplGTPGn-E/maxresdefault.webp?v=65fb0e75&sqp=CLT7u9EG&rs=AOn4CLArXCw4spkWB9o3j0baGTHkK1Zgog",
+          "downloadUrl": "https://www.youtube.com/watch?v=QJplGTPGn-E"
+        }
+      ]
+    }
+  ]
+}
