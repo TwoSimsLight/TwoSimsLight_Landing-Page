@@ -2,7 +2,7 @@ let carouselIndex = 0;
 let carouselData = [];
 
 document.addEventListener('DOMContentLoaded', () => {
-    fetch('conteudo.json')
+    fetch('conteudo.json?v=' + new Date().getTime())
         .then(response => response.json())
         .then(data => {
             inicializarDestaque(data.featured);
