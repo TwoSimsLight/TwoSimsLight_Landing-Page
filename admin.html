@@ -25,7 +25,11 @@
         
         <div class="stats-grid">
             <div class="stat-box">
-                <h2>Total de Visitas</h2>
+                <h2>Total de Partidas</h2>
+                <div id="total-matches" style="font-size: 3em; font-weight: bold; color: #ff00cc;">Carregando...</div>
+            </div>
+            <div class="stat-box">
+                <h2>Acessos ao Mini-Game</h2>
                 <div id="total-visits" style="font-size: 3em; font-weight: bold;">Carregando...</div>
             </div>
             
@@ -136,5 +140,36 @@
                 });
         });
     </script>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyAKiRPtarw2XKRBDHj9qMGoNcfhWCi2Q44",
+            authDomain: "grow-your-sims.firebaseapp.com",
+            databaseURL: "https://grow-your-sims-default-rtdb.firebaseio.com",
+            projectId: "grow-your-sims",
+            storageBucket: "grow-your-sims.firebasestorage.app",
+            messagingSenderId: "653013250471",
+            appId: "1:653013250471:web:a21fb6ef0b5682651c4682"
+        };
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.database();
+
+        db.ref('stats/pageViews').on('value', function(snapshot) {
+            let views = snapshot.val() || 0;
+            let el = document.getElementById('total-visits');
+            if(el) el.innerText = views;
+        });
+        
+        db.ref('scores').on('value', function(snapshot) {
+            let matches = snapshot.numChildren() || 0;
+            let el = document.getElementById('total-matches');
+            if(el) el.innerText = matches;
+        });
+    </script>
 </body>
+
 </html>
