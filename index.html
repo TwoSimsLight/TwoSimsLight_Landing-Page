@@ -1,13 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>TwoSimsLight - The Sims 2 Mini-Game, Mods & Streaming</title>
+    <meta name="description" content="Play the exclusive TwoSimsLight Memory Mini-Game, download custom content (CC) like Bella Goth, and stream classic Sims movies.">
+    <meta name="keywords" content="The Sims 2, Sims 2 Mods, CC, Bella Goth, Sims Mini-Game, Maxis, TwoSimsLight">
+    
+    <!-- Open Graph for Social Media -->
+    <meta property="og:title" content="TwoSimsLight - The Sims 2 Nostalgia">
+    <meta property="og:description" content="Play our exclusive Sims 2 Mini-Game and discover custom content!">
+    <meta property="og:type" content="website">
+
+    <!-- Firebase SDK (v8 compat) -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TwoSimsLight - Streaming & Downloads</title>
+    
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        .btn-minigame {
+            padding: 8px 20px; 
+            margin-left: 15px; 
+            text-decoration: none; 
+            font-weight: bold; 
+            background: linear-gradient(135deg, #00ffcc, #00b38f); 
+            border: none; 
+            border-radius: 20px; 
+            color: #111 !important;
+            display: inline-block;
+        }
+        .tooltip-container {
+            position: relative;
+            display: inline-block;
+        }
+        .tooltip-box {
+            visibility: hidden;
+            background-color: #222;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px 10px;
+            position: absolute;
+            z-index: 1;
+            bottom: 150%; 
+            left: 50%;
+            margin-left: -70px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            white-space: nowrap;
+            font-size: 12px;
+            font-weight: bold;
+            box-shadow: 0px 4px 6px rgba(0,0,0,0.3);
+            border: 1px solid #444;
+        }
+        .tooltip-box::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #222 transparent transparent transparent;
+        }
+        .tooltip-container:hover .tooltip-box {
+            visibility: visible;
+            opacity: 1;
+        }
+    </style>
 </head>
 <body>
 
@@ -20,7 +85,11 @@
                 <li><a href="#" class="active">Home</a></li>
                 <li><a href="#videos">Videos</a></li>
                 <li><a href="#downloads">Downloads</a></li>
-                <li><a href="grow-your-sims/index.html" class="btn btn-primary" style="padding: 8px 20px; margin-left: 15px; text-decoration: none; font-weight: bold; background: linear-gradient(135deg, #00ffcc, #00b38f); border: none; border-radius: 20px; color: #111;">🎮 Jogar Mini-Game</a></li>
+                
+                <li class="tooltip-container">
+                    <a href="grow-your-sims/index.html" class="btn btn-primary btn-minigame">🎮 Play Mini-Game</a>
+                    <div class="tooltip-box"><span id="play-count-text">🔥 Loading players...</span></div>
+                </li>
             </ul>
         </nav>
     </header>
@@ -57,5 +126,36 @@
     <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
 
     <script src="app.js?v=3"></script>
+
+    <script>
+        // ============ FIREBASE CONFIGURATION (GLOBAL LEADERBOARD) ============
+        // TODO: COPIE AS MESMAS CHAVES DO SEU SCRIPT.JS E COLE AQUI PARA O TOOLTIP FUNCIONAR!
+        const firebaseConfig = {
+            apiKey: "AIzaSyAKiRPtarw2XKRBDHj9qMGoNcfhWCi2Q44",
+            authDomain: "grow-your-sims.firebaseapp.com",
+            databaseURL: "https://grow-your-sims-default-rtdb.firebaseio.com",
+             projectId: "grow-your-sims",
+            storageBucket: "grow-your-sims.firebasestorage.app",
+            messagingSenderId: "653013250471",
+            appId: "1:653013250471:web:a21fb6ef0b5682651c4682",
+             measurementId: "G-KPWGC45LE7"
+        };
+
+        if (typeof firebase !== 'undefined') {
+            try {
+                firebase.initializeApp(firebaseConfig);
+                var db = firebase.database();
+                
+                // Fetch player count
+                db.ref('scores').on('value', function(snapshot) {
+                    var count = snapshot.numChildren();
+                    document.getElementById('play-count-text').innerText = '🔥 ' + count + ' people played this!';
+                });
+            } catch(e) {
+                console.warn("Firebase Tooltip não configurado ainda.");
+                document.getElementById('play-count-text').innerText = '🔥 Be the first to play!';
+            }
+        }
+    </script>
 </body>
 </html>
