@@ -192,10 +192,10 @@
                             <p id="res-message" style="margin-top:15px; font-weight:bold;"></p>
                             
                             <div id="nickname-section" style="margin-top:20px; padding: 10px; background: #f1f6fc; border: 1px solid #b7cde5; border-radius: 8px;">
-                                <p style="margin-bottom: 5px; color: #264a7f; font-weight: bold;">Salvar no Ranking Global</p>
-                                <input type="text" id="player-nickname" placeholder="Digite seu Nickname" style="padding: 5px; border-radius: 5px; border: 1px solid #ccc; text-align: center; width: 150px;">
-                                <button id="btn-save-score" style="padding: 5px 10px; background: #85a4ce; color: #fff; border: none; border-radius: 5px; cursor: pointer; font-weight: bold;">Salvar</button>
-                                <p id="save-msg" style="color: #9bc45c; font-size: 12px; margin-top: 5px; display: none;">Salvo com sucesso!</p>
+                                <p style="margin-bottom: 5px; color: #264a7f; font-weight: bold;">Save to Global Ranking</p>
+                                <input type="text" id="player-nickname" placeholder="Enter your Nickname" style="padding: 5px; border-radius: 5px; border: 1px solid #ccc; text-align: center; width: 150px;">
+                                <button id="btn-save-score" style="padding: 5px 10px; background: #85a4ce; color: #fff; border: none; border-radius: 5px; cursor: pointer; font-weight: bold;">Save</button>
+                                <p id="save-msg" style="color: #9bc45c; font-size: 12px; margin-top: 5px; display: none;">Saved successfully!</p>
                             </div>
 
                             <button id="btn-replay" class="action-btn" style="margin-top:20px;"><strong>Play Again</strong></button>
@@ -225,14 +225,14 @@
         <h2>Global Rankings</h2>
         
         <div class="rank-section">
-            <h3 class="best-title">Top 10 Melhores</h3>
-            <div class="rank-table-header"><span>Jogador</span><span>Acertos</span><span>Tentativas</span></div>
+            <h3 class="best-title">Top 10 Best Scores</h3>
+            <div class="rank-table-header"><span>Player</span><span>Correct</span><span>Attempts</span></div>
             <div id="top-best-list" class="rank-list">Carregando...</div>
         </div>
         
         <div class="rank-section">
-            <h3 class="worst-title">Top 10 Piores</h3>
-            <div class="rank-table-header"><span>Jogador</span><span>Acertos</span><span>Tentativas</span></div>
+            <h3 class="worst-title">Top 10 Worst Scores</h3>
+            <div class="rank-table-header"><span>Player</span><span>Correct</span><span>Attempts</span></div>
             <div id="top-worst-list" class="rank-list">Carregando...</div>
         </div>
     </div>
@@ -241,12 +241,12 @@
 <!-- AD SCREEN OVERLAY -->
 <div id="ad-overlay" style="display: none;">
     <div class="ad-content">
-        <h2>Patrocinador</h2>
+        <h2>Sponsor</h2>
         <div class="ad-video-placeholder">
-            <span>Anúncio em exibição...</span>
+            <span>Advertisement playing...</span>
         </div>
-        <p>O seu jogo começará em: <span id="ad-timer">15</span> segundos</p>
-        <button id="btn-skip-ad" disabled>Aguarde...</button>
+        <p>Your game will start in: <span id="ad-timer">15</span> seconds</p>
+        <button id="btn-skip-ad" disabled>Please wait...</button>
     </div>
 </div>
 
