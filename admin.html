@@ -50,6 +50,13 @@
                 <tr><th>ID do Arquivo (Mod/CC)</th><th>Cliques no Botão</th></tr>
             </table>
         </div>
+        
+        <div class="stat-box" style="margin-top: 20px;">
+            <h2>Visualizações de Vídeos</h2>
+            <table id="views-table">
+                <tr><th>ID do Vídeo</th><th>Pessoas Assistiram</th></tr>
+            </table>
+        </div>
     </div>
 
     <!-- Firebase SDK -->
@@ -105,6 +112,20 @@
         database.ref('downloads').on('value', (snapshot) => {
             const data = snapshot.val() || {};
             const table = document.getElementById('downloads-table');
+            table.innerHTML = table.rows[0].outerHTML;
+            Object.entries(data)
+                .sort((a, b) => b[1] - a[1])
+                .forEach(([key, count]) => {
+                    const row = table.insertRow();
+                    row.insertCell(0).textContent = key;
+                    row.insertCell(1).textContent = count;
+                });
+        });
+
+        // Carregar Visualizações de Vídeos
+        database.ref('views').on('value', (snapshot) => {
+            const data = snapshot.val() || {};
+            const table = document.getElementById('views-table');
             table.innerHTML = table.rows[0].outerHTML;
             Object.entries(data)
                 .sort((a, b) => b[1] - a[1])

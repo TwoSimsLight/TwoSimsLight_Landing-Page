@@ -163,7 +163,25 @@ function abrirMidia(item) {
                         allowfullscreen>
                 </iframe>
             </div>
+            <div id="views-counter-${item.id}" style="color: #00ffcc; font-weight: bold; margin-top: 15px; text-align: center;">Carregando visualizações...</div>
         `;
+
+        // Incrementa a visualização no Firebase e escuta mudanças
+        const viewsRef = database.ref('views/' + item.id);
+        
+        // Adiciona +1 view automaticamente ao abrir o vídeo
+        viewsRef.transaction((currentViews) => {
+            return (currentViews || 0) + 1;
+        });
+
+        // Mostra as views na tela em tempo real
+        viewsRef.on('value', (snapshot) => {
+            const count = snapshot.val() || 1;
+            const counterEl = document.getElementById('views-counter-' + item.id);
+            if (counterEl) {
+                counterEl.textContent = `👀 ${count} pessoas assistiram ao vídeo!`;
+            }
+        });
     } else if (item.type === 'download') {
         modalBody.innerHTML = `
             <div class="download-modal-banner" style="background-image: url('${item.image}')">
