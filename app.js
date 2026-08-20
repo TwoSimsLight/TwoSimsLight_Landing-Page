@@ -1,3 +1,42 @@
+// ==========================================================================
+// FIREBASE & ESTATÍSTICAS
+// ==========================================================================
+const firebaseConfig = {
+  apiKey: "AIzaSyAQqbyYzdUmggJXSOckssxfMzOJbgJD0yE",
+  authDomain: "twosimslightblog.firebaseapp.com",
+  databaseURL: "https://twosimslightblog-default-rtdb.firebaseio.com",
+  projectId: "twosimslightblog",
+  storageBucket: "twosimslightblog.firebasestorage.app",
+  messagingSenderId: "473211206600",
+  appId: "1:473211206600:web:f7c5d9cf57927f4f145efd",
+  measurementId: "G-TMX6MLJVH6"
+};
+
+// Inicializa o Firebase
+if (!firebase.apps.length) {
+    firebase.initializeApp(firebaseConfig);
+}
+const database = firebase.database();
+
+// Registrar visita com país
+function registrarVisita() {
+    // Busca os dados de localização baseados no IP do usuário
+    fetch('https://ipapi.co/json/')
+        .then(res => res.json())
+        .then(data => {
+            const visitData = {
+                country: data.country_name || 'Desconhecido',
+                countryCode: data.country || 'XX',
+                timestamp: firebase.database.ServerValue.TIMESTAMP,
+                path: window.location.pathname || '/'
+            };
+            // Salva no banco de dados na pasta 'visits'
+            database.ref('visits').push(visitData);
+        })
+        .catch(err => console.error("Erro ao registrar visita:", err));
+}
+registrarVisita();
+
 let carouselIndex = 0;
 let carouselData = [];
 
@@ -134,12 +173,32 @@ function abrirMidia(item) {
             <div class="download-modal-body">
                 <h2>${item.title}</h2>
                 <p>${item.description || 'No detailed description provided.'}</p>
-                <a href="${item.downloadUrl}" target="_blank" class="btn btn-primary">
+                <div id="download-counter-${item.id}" style="color: #00ffcc; font-weight: bold; margin-bottom: 15px;">Carregando estatísticas...</div>
+                <a href="${item.downloadUrl}" target="_blank" class="btn btn-primary" id="btn-download-${item.id}">
                     📥 Direct Download
                 </a>
             </div>
         `;
-    
+        
+        // Listener do Firebase para o contador de downloads
+        const counterRef = database.ref('downloads/' + item.id);
+        counterRef.on('value', (snapshot) => {
+            const count = snapshot.val() || 0;
+            const counterEl = document.getElementById('download-counter-' + item.id);
+            if (counterEl) {
+                counterEl.textContent = `🔥 ${count} pessoas já baixaram!`;
+            }
+        });
+
+        // Registrar o clique no botão de download
+        const btnDownload = document.getElementById('btn-download-' + item.id);
+        if (btnDownload) {
+            btnDownload.addEventListener('click', () => {
+                counterRef.transaction((currentCount) => {
+                    return (currentCount || 0) + 1;
+                });
+            });
+        }
     }
 
     modal.style.display = 'flex';
