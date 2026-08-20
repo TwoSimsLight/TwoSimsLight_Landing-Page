@@ -1,0 +1,62 @@
+{
+  "featured": [
+    {
+      "id": "feat-1",
+      "title": "The Sims 2: Bella Goth full movie",
+      "type": "video",
+      "description": "Immerse yourself in the complete story of Bella Goth, one of the most iconic and mysterious characters in The Sims universe!",
+      "image": "https://i.pinimg.com/736x/2e/2c/9d/2e2c9dc70cda3f47a4586a6ec6cfeedd.jpg",
+      "youtubeId": "25RXijA0Guc"
+    },
+    {
+      "id": "feat-2",
+      "title": "Bella Goth Makeover - Custom Content Sims 2",
+      "type": "download",
+      "description": "Bella goth full sim in sims2.pack for download!",
+      "image": "https://i.pinimg.com/736x/22/30/b3/2230b3b0537a0bd16a945cca31507f6d.jpg",
+      "downloadUrl": "https://www.mediafire.com/file/0p865ag1z8y87oe/Bella_Goth-By-TwoSimsLight.Sims2Pack/file"
+    }
+  ],
+  "rows": [
+    {
+      "title": "Recent Videos",
+      "items": [
+        {
+          "id": "v-1",
+          "title": "Sims 2 - The Movie",
+          "type": "video",
+          "youtubeId": "uxzaY2ukJWA",
+          "image": "https://i.pinimg.com/736x/63/2e/0a/632e0aeb4d4d353fa81eba3fa377356c.jpg"
+        },
+        {
+          "id": "v-2",
+          "title": "Agnes Crumplebottom: The FULL Sims 3 Movie",
+          "type": "video",
+          "youtubeId": "yINzrKxfqzY",
+          "image": "https://i.pinimg.com/1200x/17/ef/11/17ef11596e1c212e98dcd3da8a84e23a.jpg"
+        }
+      ]
+    },
+    {
+      "title": "Packs of Mods & Custom Content (CC)",
+      "items": [
+        {
+          "id": "d-1",
+          "title": "Bella Goth Makeover sims 2",
+          "type": "download",
+          "description": "Bella goth full sim in sims2.pack for download!",
+          "image": "https://i.pinimg.com/736x/22/30/b3/2230b3b0537a0bd16a945cca31507f6d.jpg",
+          "downloadUrl": "https://www.mediafire.com/file/0p865ag1z8y87oe/Bella_Goth-By-TwoSimsLight.Sims2Pack/file"
+        },
+        {
+          "id": "d-2",
+          "title": "Sims 4 Ray Tracing download mod",
+          "type": "download",
+          "description": "Download the ray tracing shader preset for sims 4! DOWNLOAD LINKS:<br><br>Gshade program:<br>https://seulink.net/GshadeSims4<br><br>Syrius Ascend Ray Tracing Preset: (mediafire):<br>https://seulink.net/S4RayTracing",
+          "image": "https://img.youtube.com/vi/QJplGTPGn-E/maxresdefault.jpg",
+          "downloadUrl": "https://www.youtube.com/watch?v=QJplGTPGn-E"
+        }
+      ]
+    }
+  ]
+}

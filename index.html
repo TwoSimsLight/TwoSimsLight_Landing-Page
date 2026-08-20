@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TwoSimsLight - Streaming & Downloads</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo">
+            two<span>sims</span>light<span class="plumbob">♦</span>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#" class="active">Home</a></li>
+                <li><a href="#videos">Videos</a></li>
+                <li><a href="#downloads">Downloads</a></li>
+                <li><a href="grow-your-sims/index.html" class="btn btn-primary" style="padding: 8px 20px; margin-left: 15px; text-decoration: none; font-weight: bold; background: linear-gradient(135deg, #00ffcc, #00b38f); border: none; border-radius: 20px; color: #111;">🎮 Jogar Mini-Game</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="hero-banner">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <span class="badge">FEATURED</span>
+            <h1 id="hero-title">Loading...</h1>
+            <p id="hero-description">Get ready to transform your game.</p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary" id="hero-main-btn">► Watch</button>
+            </div>
+        </div>
+    </section>
+
+    <main class="content-container" id="content-rows">
+        </main>
+
+    <div class="modal" id="media-modal">
+        <div class="modal-content">
+            <span class="close-modal" id="close-modal">&times;</span>
+            <div id="modal-body">
+                </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2026 TwoSimsLight. Made by a fan for the fans. Inspired by the The Sims 2 aesthetic.</p>
+    </footer>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+
+    <script src="app.js?v=3"></script>
+</body>
+</html>
