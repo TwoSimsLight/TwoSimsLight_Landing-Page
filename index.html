@@ -26,10 +26,10 @@
         .btn-minigame {
             padding: 8px 20px; 
             margin-left: 15px; 
-            text-decoration: none; 
+            text-decoration: nãone; 
             font-weight: bold; 
             background: linear-gradient(135deg, #00ffcc, #00b38f); 
-            border: none; 
+            border: nãone; 
             border-radius: 20px; 
             color: #111 !important;
             display: inline-block;
@@ -52,7 +52,7 @@
             margin-left: -70px;
             opacity: 0;
             transition: opacity 0.3s;
-            white-space: nowrap;
+            white-space: nãowrap;
             font-size: 12px;
             font-weight: bold;
             box-shadow: 0px 4px 6px rgba(0,0,0,0.3);
@@ -147,10 +147,19 @@
                 var db = firebase.database();
                 
                 // Fetch player count
+                var fetched = false;
                 db.ref('scores').on('value', function(snapshot) {
+                    fetched = true;
                     var count = snapshot.numChildren();
                     document.getElementById('play-count-text').innerText = '🔥 ' + count + ' people played this!';
                 });
+                
+                // Fallback Se o Firebase falhar ou demorar muito (sem chaves)
+                setTimeout(function() {
+                    if (!fetched) {
+                        document.getElementById('play-count-text').innerText = '🔥 Join the players nãow!';
+                    }
+                }, 3000);
             } catch(e) {
                 console.warn("Firebase Tooltip não configurado ainda.");
                 document.getElementById('play-count-text').innerText = '🔥 Be the first to play!';
