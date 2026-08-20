@@ -438,6 +438,16 @@ if (typeof firebase !== 'undefined') {
     try {
         firebase.initializeApp(firebaseConfig);
         db = firebase.database();
+        
+        // ==== ANALYTICS: Registrar Acesso ====
+        try {
+            db.ref('stats/pageViews').transaction(function(currentViews) {
+                return (currentViews || 0) + 1;
+            });
+        } catch(err) {
+            console.error("Erro ao registrar view:", err);
+        }
+
     } catch(e) {
         console.warn("Firebase não configurado ainda.");
     }
