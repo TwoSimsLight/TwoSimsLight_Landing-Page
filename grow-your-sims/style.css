@@ -2,7 +2,7 @@
 body {
     background-color: #000; /* Black background to make window pop */
     font-family: Arial, sans-serif;
-    display: flex; justify-content: center; align-items: center; min-height: 100vh;
+    display: flex; justify-content: center; align-items: center; min-height: 100vh; flex-direction: column;
 }
 
 .os-window {
@@ -405,4 +405,86 @@ body {
     .memory-grid { gap: 5px; grid-template-columns: repeat(4, 65px); grid-template-rows: repeat(4, 65px); }
     .mem-front, .mem-back { width: 65px; height: 65px; }
     .mem-card { width: 65px; height: 65px; }
+}
+
+/* =========================================
+   BACK TO HOME BUTTON (SPINNING PLUMBOB)
+========================================= */
+.back-home-btn {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 8px 15px;
+    border-radius: 25px;
+    text-decoration: none;
+    color: #264a7f;
+    font-weight: bold;
+    font-size: 14px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    border: 2px solid #85a4ce;
+    z-index: 100;
+    transition: transform 0.2s, background 0.2s;
+}
+.back-home-btn:hover {
+    transform: scale(1.05);
+    background: #fff;
+}
+.spin-plumbob {
+    width: 20px;
+    height: 20px;
+    animation: spin 3s linear infinite;
+}
+@keyframes spin {
+    0% { transform: rotateY(0deg); }
+    100% { transform: rotateY(360deg); }
+}
+
+@media (max-width: 780px) {
+    .back-home-btn {
+        position: static;
+        margin-bottom: 10px;
+        align-self: flex-start;
+    }
+}
+
+/* =========================================
+   TOP BAR & CLEAN ADS
+========================================= */
+.top-bar {
+    width: 100%;
+    max-width: 1200px;
+    padding: 20px 20px 0 20px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.back-home-btn {
+    position: static; /* Override absolute */
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #fff;
+    padding: 8px 20px;
+    border-radius: 25px;
+    text-decoration: none;
+    color: #264a7f;
+    font-weight: bold;
+    font-size: 15px;
+    box-shadow: 0 4px 10px rgba(255,255,255,0.2);
+    border: 2px solid #85a4ce;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.back-home-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(255,255,255,0.4);
+}
+.side-ad-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 160px;
 }
