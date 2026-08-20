@@ -458,8 +458,8 @@ if (adOverlay && btnSkipAd && adTimerSpan) {
             adTimerSpan.textContent = adTimeLeft;
         } else {
             clearInterval(adInterval);
-            adTimerSpan.parentElement.textContent = "Você já pode jogar!";
-            btnSkipAd.textContent = "Jogar Agora";
+            adTimerSpan.parentElement.textContent = "You can play now!";
+            btnSkipAd.textContent = "Play Now";
             btnSkipAd.disabled = false;
         }
     }, 1000);
@@ -493,14 +493,14 @@ function saveScoreToFirebase(nickname, corrects, attempts) {
         }
     }).catch((e) => {
         console.error("Erro ao salvar:", e);
-        alert("Erro ao salvar no banco de dados.");
+        alert("Error saving to database.");
     });
 }
 
 function updateLeaderboardUI() {
     if (!db) {
-        document.getElementById('top-best-list').innerHTML = '<div style="padding: 10px; text-align: center; color:#999;">Aguardando Configuração do Firebase...</div>';
-        document.getElementById('top-worst-list').innerHTML = '<div style="padding: 10px; text-align: center; color:#999;">Aguardando Configuração do Firebase...</div>';
+        document.getElementById('top-best-list').innerHTML = '<div style="padding: 10px; text-align: center; color:#999;">Waiting for Firebase Setup...</div>';
+        document.getElementById('top-worst-list').innerHTML = '<div style="padding: 10px; text-align: center; color:#999;">Waiting for Firebase Setup...</div>';
         return;
     }
     
@@ -531,7 +531,7 @@ function renderRankList(elementId, list) {
     container.innerHTML = '';
     
     if (list.length === 0) {
-        container.innerHTML = '<div style="padding: 10px; text-align: center;">Nenhum placar ainda.</div>';
+        container.innerHTML = '<div style="padding: 10px; text-align: center;">No scores yet.</div>';
         return;
     }
     
@@ -551,7 +551,7 @@ if (btnSaveScore) {
     btnSaveScore.onclick = function() {
         var nickname = document.getElementById('player-nickname').value.trim();
         if (nickname === "") {
-            alert("Por favor, digite um nickname!");
+            alert("Please enter a nickname!");
             return;
         }
         saveScoreToFirebase(nickname, totalCorrect, totalAttempts);
