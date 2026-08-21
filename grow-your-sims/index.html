@@ -3,15 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <!-- Firebase SDK (v8 compat for simplicity) -->
+    <title>The Sims 2 - Mini-Game</title>
+    
+    <!-- Firebase SDK (v8 compat) -->
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grow Your Sims</title>
+    
     <link rel="stylesheet" href="style.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Arial:wght@400;700&display=swap');
-    </style>
 </head>
 <body>
 
@@ -22,254 +20,236 @@
         </a>
     </div>
 
-    
-    
     <div class="app-container">
-    <div class="side-ad-panel">
-        <p style="font-size: 10px; color: #888; text-align: center; margin-bottom: 5px;">ADVERTISEMENT</p>
-        <div id="ad-160x300-container" style="width: 100%;  display: flex; justify-content: center; align-items: center; ">
-            <!-- ============================================== -->
-            <!-- COLOQUE O CÓDIGO DO BANNER 160x300 AQUI DENTRO -->
-            <script>
-                 atOptions = {
-                'key' : '87885058b3ef8af136a31ddb5ca896c7',
-                'format' : 'iframe',
-                'height' : 300,
-                'width' : 160,
-                'params' : {}
-             };
-            </script>
-            <script src="https://www.highperformanceformat.com/87885058b3ef8af136a31ddb5ca896c7/invoke.js"></script>
-
-            <!-- ============================================== -->
-            <span style="color:#666; font-size: 12px;">Banner 160x300</span>
-        </div>
         
-        <div id="ad-320x50-container" style="width: 100%; margin-top: 20px;  display: flex; justify-content: center; align-items: center;  margin-top: 20px;">
-            <!-- ============================================== -->
-            <!-- (Opcional) COLOQUE OUTRO BANNER AQUI SE QUISER -->
-             <script>
-                 atOptions = {
-                'key' : 'a72c88c35a1d54ce7a7f73ec39a27ba3',
-                'format' : 'iframe',
-                'height' : 50,
-                'width' : 320,
-                 'params' : {}
-              };
-            </script>
-            <script src="https://www.highperformanceformat.com/a72c88c35a1d54ce7a7f73ec39a27ba3/invoke.js"></script>
-
-            <!-- ============================================== -->
-            <span style="color:#666; font-size: 12px;">Espaço Adicional</span>
-        </div>
-    </div>
-
-    <div class="os-window" id="os-window">
-        <!-- System Title Bar -->
-        <div class="os-title-bar">
-            <div class="os-title-left">
-                <img src="assets/plumbob.png" class="os-icon" alt="icon">
-                <span class="os-title">Maxis</span>
-            </div>
-            <div class="os-title-right">
-                <button class="os-btn">_</button>
-                <button class="os-btn">□</button>
-                <button class="os-btn close">×</button>
-            </div>
-        </div>
-
-        <!-- Main Installer Container -->
-        <div class="installer-container">
+        <!-- LEADERBOARD PANEL (LEFT) -->
+        <div class="leaderboard-panel">
+            <h2 style="color: #264a7f; text-align: center; margin-bottom: 15px; font-size: 18px;">Global Rankings</h2>
             
-            <div class="installer-inner">
-                <!-- Left Sidebar -->
-                <div class="sidebar">
-                    <img src="assets/Sims2Logo.jpg" alt="The Sims 2" class="logo" style="max-width: 150px; margin-bottom: 20px;">
-                    
-                    <div class="sneak-peek-area">
-                        <div style="width: 200px; height: 300px; border: 2px solid #b7cde5; border-radius: 20px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.15); background: #fff; position: relative;">
-            <div id="sneak-track" style="display: flex; height: 100%; transition: transform 0.5s ease-in-out;">
-                <!-- Images injected via JS -->
+            <div class="rank-section">
+                <h3 class="best-title">Top 10 Best Scores</h3>
+                <div class="rank-table-header"><span>Player</span><span>Correct</span><span>Attempts</span></div>
+                <div id="top-best-list" class="rank-list">Loading...</div>
+            </div>
+
+            <div class="rank-section" style="margin-top: 15px;">
+                <h3 class="worst-title">Top 10 Worst Scores</h3>
+                <div class="rank-table-header"><span>Player</span><span>Correct</span><span>Attempts</span></div>
+                <div id="top-worst-list" class="rank-list">Loading...</div>
             </div>
         </div>
-                        <div class="sneak-controls">
-                            <button id="sneak-prev" class="arr-btn">&lt;</button>
-                            <button id="sneak-next" class="arr-btn">&gt;</button>
-                        </div>
-                        <div class="sneak-text">
-                            The Sims 2<br>Sneak Peek
+
+        <!-- OS WINDOW (CENTER) -->
+        <div class="os-window" id="os-window">
+            <!-- System Title Bar -->
+            <div class="os-title-bar">
+                <div class="os-title-left">
+                    <img src="assets/plumbob.png" class="os-icon" alt="icon">
+                    <span class="os-title">Maxis</span>
+                </div>
+                <div class="os-title-right">
+                    <button class="os-btn">_</button>
+                    <button class="os-btn">□</button>
+                    <button class="os-btn close">x</button>
+                </div>
+            </div>
+
+            <!-- Main Installer Container -->
+            <div class="installer-container">
+                <div class="installer-inner">
+                    <!-- Left Sidebar -->
+                    <div class="sidebar">
+                        <img src="assets/Sims2Logo.jpg" alt="The Sims 2" class="logo" style="max-width: 150px; margin-bottom: 20px;">
+                        
+                        <div class="sneak-peek-area">
+                            <div class="sneak-peek-frame">
+                                <div id="sneak-track" style="display:flex; height:100%; transition: transform 0.5s ease-in-out;">
+                                    <img src="assets/credits.png" alt="Sneak Peek">
+                                </div>
+                            </div>
+                            <div class="sneak-controls">
+                                <button id="sneak-prev" class="arr-btn">&lt;</button>
+                                <button id="sneak-next" class="arr-btn">&gt;</button>
+                            </div>
+                            <p class="sneak-text">The Sims 2<br>Sneak Peek</p>
                         </div>
                     </div>
-                </div>
 
-                <!-- Right Content Area -->
-                <div class="main-content">
-                    
-                    <!-- Header with Timer and Stats -->
-                    <div class="game-header">
-                        <div class="title-column">
-                            <h2>Grow<br>Your<br>Sims</h2>
-                        </div>
+                    <!-- Right Content Area -->
+                    <div class="main-content">
                         
-                        <div class="stats-column">
-                            <div class="clock-container">
-                                <!-- Gender icons attached to clock -->
-                                <div style="position: absolute; left: -10px; top: -5px; width: 22px; height: 22px; background: linear-gradient(to bottom, #fff, #d0e0cd); border: 2px solid #85a4ce; border-radius: 50%; display: flex; justify-content: center; align-items: center; color: #85a4ce; font-size: 14px; font-weight: bold; z-index: 1;">♂</div>
-                                <div style="position: absolute; left: -10px; bottom: -5px; width: 22px; height: 22px; background: linear-gradient(to bottom, #fff, #d0e0cd); border: 2px solid #85a4ce; border-radius: 50%; display: flex; justify-content: center; align-items: center; color: #85a4ce; font-size: 14px; font-weight: bold; z-index: 1;">♀</div>
+                        <!-- Header with Timer and Stats -->
+                        <div class="game-header">
+                            <div class="title-column">
+                                <h2>Grow<br>Your<br>Sims</h2>
+                            </div>
+                            
+                            <div class="stats-column">
+                                <div class="clock-container">
+                                    <div style="position: absolute; left: -10px; top: -5px; width: 22px; height: 22px; background: linear-gradient(to bottom, #fff, #d0e0cd); border: 2px solid #85a4ce; border-radius: 50%; display: flex; justify-content: center; align-items: center; color: #85a4ce; font-size: 14px; font-weight: bold; z-index: 1;">♂</div>
+                                    <div style="position: absolute; left: -10px; bottom: -5px; width: 22px; height: 22px; background: linear-gradient(to bottom, #fff, #d0e0cd); border: 2px solid #85a4ce; border-radius: 50%; display: flex; justify-content: center; align-items: center; color: #85a4ce; font-size: 14px; font-weight: bold; z-index: 1;">♀</div>
+                                    
+                                    <button id="pause-btn" class="pause-btn-container" title="Pause Game">
+                                        <div class="pause-icon"></div>
+                                        <div class="play-icon"></div>
+                                    </button>
+                                    <div class="clock-outer">
+                                        <div class="clock-inner">
+                                            <div class="clock-hand" id="clock-hand"></div>
+                                            <div class="clock-ticks"></div>
+                                        </div>
+                                    </div>
+                                </div>
                                 
-                                <button id="pause-btn" class="pause-btn-container" title="Pause Game">
-                                    <div class="pause-icon"></div>
-                                    <div class="play-icon"></div>
-                                </button>
-                                <div class="clock-outer">
-                                    <div class="clock-inner">
-                                        <div class="clock-hand" id="clock-hand"></div>
-                                        <div class="clock-ticks"></div>
+                                <div class="scores-panel">
+                                    <div class="score-row">
+                                        <span class="score-val" id="stat-attempts">000</span>
+                                        <span class="score-label">attempts</span>
+                                    </div>
+                                    <div class="score-row">
+                                        <span class="score-val" id="stat-correct">000</span>
+                                        <span class="score-label">correct</span>
+                                    </div>
+                                    <div class="score-row last-score-row">
+                                        <span class="score-val last-val" id="stat-score"></span>
+                                        <span class="score-label">last score</span>
                                     </div>
                                 </div>
                             </div>
+                        </div>
+
+                        <!-- Dynamic Game Screens -->
+                        <div class="screens-container">
                             
-                            <div class="scores-panel">
-                                <div class="score-row">
-                                    <span class="score-val" id="stat-attempts">000</span>
-                                    <span class="score-label">attempts</span>
+                            <!-- Start Screen -->
+                            <div id="screen-start" class="screen active">
+                                <div class="text-screen">
+                                    <p class="intro-text" id="intro-p1"></p>
+                                    <p id="intro-p2" style="margin-bottom: 5px;"></p>
+                                    <div class="divider" style="margin: 4px auto;"></div>
+                                    <div style="display: flex; gap: 15px; justify-content: center; margin-top: 15px;">
+                                        <button id="btn-male" class="action-btn" style="border-radius: 20px; padding: 5px 20px 5px 5px; display: flex; align-items: center; gap: 10px; margin: 0;">
+                                            <div style="width: 50px; height: 50px; border-radius: 50%; overflow: hidden; border: 2px solid #85a4ce; box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);">
+                                                <img src="assets/m_stage4.jpg" style="width: 100%; height: 100%; object-fit: cover; object-position: top center;">
+                                            </div>
+                                            <b style="font-size: 16px;">Male</b>
+                                        </button>
+                                        <button id="btn-female" class="action-btn" style="border-radius: 20px; padding: 5px 20px 5px 5px; display: flex; align-items: center; gap: 10px; margin: 0;">
+                                            <div style="width: 50px; height: 50px; border-radius: 50%; overflow: hidden; border: 2px solid #85a4ce; box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);">
+                                                <img src="assets/f_stage4.jpg" style="width: 100%; height: 100%; object-fit: cover; object-position: top center;">
+                                            </div>
+                                            <b style="font-size: 16px;">Female</b>
+                                        </button>
+                                    </div>
                                 </div>
-                                <div class="score-row">
-                                    <span class="score-val" id="stat-correct">000</span>
-                                    <span class="score-label">correct</span>
+                            </div>
+
+                            <!-- Memory Board Screen -->
+                            <div id="screen-memory" class="screen hidden">
+                                <div class="memory-grid" id="memory-board">
+                                    <!-- Cards injected by JS -->
                                 </div>
-                                <div class="score-row last-score-row">
-                                    <span class="score-val last-val" id="stat-score"></span>
-                                    <span class="score-label">last score</span>
+                            </div>
+
+                            <!-- Trivia Screen -->
+                            <div id="screen-trivia" class="screen hidden text-screen">
+                                <h3 id="trivia-question" class="trivia-q"></h3>
+                                <div id="trivia-options" class="trivia-opts">
+                                    <!-- Options injected here -->
                                 </div>
+                            </div>
+
+                            <!-- End Screen -->
+                            <div id="screen-end" class="screen hidden text-screen">
+                                <p id="res-message" style="margin-top:15px; font-weight:bold;"></p>
+                                
+                                <div id="nickname-section" style="margin-top:20px; padding: 10px; background: #f1f6fc; border: 1px solid #b7cde5; border-radius: 8px;">
+                                    <p style="margin-bottom: 5px; color: #264a7f; font-weight: bold;">Save to Global Ranking</p>
+                                    <input type="text" id="player-nickname" placeholder="Enter your Nickname" style="padding: 5px; border-radius: 5px; border: 1px solid #ccc; text-align: center; width: 150px;">
+                                    <button id="btn-save-score" style="padding: 5px 10px; background: #85a4ce; color: #fff; border: none; border-radius: 5px; cursor: pointer; font-weight: bold;">Save</button>
+                                    <p id="save-msg" style="color: #9bc45c; font-size: 12px; margin-top: 5px; display: none;">Saved successfully!</p>
+                                </div>
+
+                                <button id="btn-replay" class="action-btn" style="margin-top:20px;"><strong>Play Again</strong></button>
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Dynamic Game Screens -->
-                    <div class="screens-container">
-                        
-                        <!-- Start Screen -->
-                        <div id="screen-start" class="screen active">
-                            <div class="text-screen">
-                                <p class="intro-text" id="intro-p1"></p>
-                                <p id="intro-p2" style="margin-bottom: 5px;"></p>
-                                <div class="divider" style="margin: 4px auto;"></div>
-                                <div style="display: flex; gap: 15px; justify-content: center; margin-top: 15px;">
-                                    <button id="btn-male" class="action-btn" style="border-radius: 20px; padding: 5px 20px 5px 5px; display: flex; align-items: center; gap: 10px; margin: 0;">
-                                        <div style="width: 50px; height: 50px; border-radius: 50%; overflow: hidden; border: 2px solid #85a4ce; box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);">
-                                            <img src="assets/m_stage4.jpg" style="width: 100%; height: 100%; object-fit: cover; object-position: top center;">
-                                        </div>
-                                        <b style="font-size: 16px;">Male</b>
-                                    </button>
-                                    <button id="btn-female" class="action-btn" style="border-radius: 20px; padding: 5px 20px 5px 5px; display: flex; align-items: center; gap: 10px; margin: 0;">
-                                        <div style="width: 50px; height: 50px; border-radius: 50%; overflow: hidden; border: 2px solid #85a4ce; box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);">
-                                            <img src="assets/f_stage4.jpg" style="width: 100%; height: 100%; object-fit: cover; object-position: top center;">
-                                        </div>
-                                        <b style="font-size: 16px;">Female</b>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Memory Board Screen -->
-                        <div id="screen-memory" class="screen hidden">
-                            <div class="memory-grid" id="memory-board">
-                                <!-- Cards injected by JS -->
-                            </div>
-                        </div>
-
-                        <!-- Trivia Screen -->
-                        <div id="screen-trivia" class="screen hidden text-screen">
-                            <h3 id="trivia-question" class="trivia-q"></h3>
-                            <div id="trivia-options" class="trivia-opts">
-                                <!-- Options injected here -->
-                            </div>
-                        </div>
-
-                        <!-- End Screen -->
-                        <div id="screen-end" class="screen hidden text-screen">
-                            <p id="res-message" style="margin-top:15px; font-weight:bold;"></p>
-                            
-                            <div id="nickname-section" style="margin-top:20px; padding: 10px; background: #f1f6fc; border: 1px solid #b7cde5; border-radius: 8px;">
-                                <p style="margin-bottom: 5px; color: #264a7f; font-weight: bold;">Save to Global Ranking</p>
-                                <input type="text" id="player-nickname" placeholder="Enter your Nickname" style="padding: 5px; border-radius: 5px; border: 1px solid #ccc; text-align: center; width: 150px;">
-                                <button id="btn-save-score" style="padding: 5px 10px; background: #85a4ce; color: #fff; border: none; border-radius: 5px; cursor: pointer; font-weight: bold;">Save</button>
-                                <p id="save-msg" style="color: #9bc45c; font-size: 12px; margin-top: 5px; display: none;">Saved successfully!</p>
-                            </div>
-
-                            <button id="btn-replay" class="action-btn" style="margin-top:20px;"><strong>Play Again</strong></button>
-                        </div>
+                <!-- Footer Progress -->
+                <div class="installer-footer">
+                    <div class="progress-dots">
+                        <div class="dot active"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
                     </div>
+                    <div class="progress-text">The Sims 2 install in progress</div>
                 </div>
             </div>
+        </div> <!-- End os-window -->
 
-            <!-- Footer Progress -->
-            <div class="installer-footer">
-                <div class="progress-dots">
-                    <div class="dot active"></div>
-                    <div class="dot"></div>
-                    <div class="dot"></div>
-                    <div class="dot"></div>
-                    <div class="dot"></div>
-                </div>
-                <div class="progress-text">The Sims 2 install in progress</div>
-            </div>
+    </div> <!-- End app-container -->
 
-        </div>
-    </div>
-    
-    </div> <!-- End os-window -->
-
-    <div class="leaderboard-panel">
-        <h2>Global Rankings</h2>
-        
-        <div class="rank-section">
-            <h3 class="best-title">Top 10 Best Scores</h3>
-            <div class="rank-table-header"><span>Player</span><span>Correct</span><span>Attempts</span></div>
-            <div id="top-best-list" class="rank-list">Carregando...</div>
-        </div>
-        
-        <div class="rank-section">
-            <h3 class="worst-title">Top 10 Worst Scores</h3>
-            <div class="rank-table-header"><span>Player</span><span>Correct</span><span>Attempts</span></div>
-            <div id="top-worst-list" class="rank-list">Carregando...</div>
-        </div>
-    </div>
-</div>
-
-<!-- AD SCREEN OVERLAY -->
-<div id="ad-overlay" style="display: none;">
-    <div class="ad-content">
-        <h2>Sponsor</h2>
-        <div class="ad-video-placeholder" style="background: transparent; border: none;">
-            <div style="width: 300px; height: 250px; background: #222; display: flex; justify-content: center; align-items: center; margin: 0 auto; border: 1px solid #444;">
-                <script type="text/javascript">
-                    atOptions = {
-                        'key' : '2929c3382c3dcef4a48979a2e1863210',
-                        'format' : 'iframe',
-                        'height' : 250,
-                        'width' : 300,
-                        'params' : {}
-                    };
+    <!-- BOTTOM ADS -->
+    <div class="bottom-ad-panel">
+        <p style="font-size: 10px; color: #888; text-align: center; margin-bottom: 5px; width: 100%;">ADVERTISEMENT</p>
+        <div class="ads-row" style="display: flex; gap: 20px; justify-content: center; align-items: center; flex-wrap: wrap;">
+            <!-- Ad 160x300 -->
+            <div id="ad-160x300-container">
+                <script>
+                   atOptions = {
+                  'key' : '87885058b3ef8af136a31ddb5ca896c7',
+                  'format' : 'iframe',
+                  'height' : 300,
+                  'width' : 160,
+                  'params' : {}
+               };
                 </script>
-                <script type="text/javascript" src="//www.highperformanceformat.com/2929c3382c3dcef4a48979a2e1863210/invoke.js"></script>
+                <script src="https://www.highperformanceformat.com/87885058b3ef8af136a31ddb5ca896c7/invoke.js"></script>
+            </div>
+            
+            <!-- Ad 320x50 -->
+            <div id="ad-320x50-container">
+                <script>
+                   atOptions = {
+                  'key' : 'a72c88c35a1d54ce7a7f73ec39a27ba3',
+                  'format' : 'iframe',
+                  'height' : 50,
+                  'width' : 320,
+                   'params' : {}
+                };
+                </script>
+                <script src="https://www.highperformanceformat.com/a72c88c35a1d54ce7a7f73ec39a27ba3/invoke.js"></script>
             </div>
         </div>
-        <p>Your game will start in: <span id="ad-timer">15</span> seconds</p>
-        <button id="btn-skip-ad" disabled>Please wait...</button>
     </div>
-</div>
 
-    <!-- ============================================== -->
-    <!-- COLOQUE O CÓDIGO DO POPUNDER E SOCIAL BAR AQUI -->
-     <script src="https://pl30944933.effectivecpmnetwork.com/09/52/c1/0952c1ef7a0f472f2f40cea1c44510ad.js"></script>
-    <script src="https://pl30944934.effectivecpmnetwork.com/19/90/5c/19905c38ce6f4287160353bc59c27d64.js"></script>
+    <!-- AD SCREEN OVERLAY -->
+    <div id="ad-overlay" style="display: none;">
+        <div class="ad-content">
+            <h2>Sponsor</h2>
+            <div class="ad-video-placeholder" style="background: transparent; border: none;">
+                <div style="width: 300px; height: 250px; background: #222; display: flex; justify-content: center; align-items: center; margin: 0 auto; border: 1px solid #444;">
+                    <script type="text/javascript">
+                        atOptions = {
+                            'key' : '2929c3382c3dcef4a48979a2e1863210',
+                            'format' : 'iframe',
+                            'height' : 250,
+                            'width' : 300,
+                            'params' : {}
+                        };
+                    </script>
+                    <script type="text/javascript" src="//www.highperformanceformat.com/2929c3382c3dcef4a48979a2e1863210/invoke.js"></script>
+                </div>
+            </div>
+            <p>Your game will start in: <span id="ad-timer">15</span> seconds</p>
+            <button id="btn-skip-ad" disabled>Please wait...</button>
+        </div>
+    </div>
 
-    <!-- ============================================== -->
-    
     <script src="data.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
-

@@ -7,7 +7,7 @@ body {
 
 .os-window {
     width: 750px;
-    height: 700px;
+    min-height: 700px; height: auto; padding-bottom: 5px;
     background: #e8eaec;
     border: 1px solid #737373;
     border-radius: 6px;
@@ -395,7 +395,7 @@ body {
 }
 @media (max-width: 780px) {
     body { align-items: flex-start; padding: 10px; }
-    .os-window { width: 100%; height: auto; min-height: 700px; }
+    .os-window { width: 100%; height: auto; min-min-height: 700px; height: auto; padding-bottom: 5px; }
     .game-content { flex-direction: column; }
     .sidebar { width: 100%; border-right: none; border-bottom: 1px solid #b7cde5; padding: 10px; flex-direction: row; justify-content: space-around; }
     .sidebar img#logo { display: none; } /* Hide logo to save space */
@@ -488,3 +488,62 @@ body {
     align-items: center;
     min-width: 160px;
 }
+
+/* BOTTOM ADS PANEL */
+.bottom-ad-panel {
+    width: 100%;
+    margin-top: 30px;
+    padding: 20px;
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.leaderboard-panel {
+    background: #f1f6fc;
+    border: 2px solid #b7cde5;
+    border-radius: 8px;
+    padding: 15px;
+    width: 250px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    font-family: Arial, sans-serif;
+}
+.rank-table-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    font-weight: bold;
+    color: #fff;
+    padding: 5px;
+    background: #85a4ce;
+    border-radius: 4px;
+    margin-bottom: 5px;
+}
+.rank-list {
+    font-size: 11px;
+    color: #444;
+}
+.rank-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 4px;
+    border-bottom: 1px solid #ddd;
+}
+.best-title {
+    background: #85a4ce;
+    color: #fff;
+    text-align: center;
+    padding: 5px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+.worst-title {
+    background: #e57373;
+    color: #fff;
+    text-align: center;
+    padding: 5px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+#sneak-track img { width: 125px; height: 100%; object-fit: cover; flex-shrink: 0; }
